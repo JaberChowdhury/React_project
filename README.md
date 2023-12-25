@@ -1,8 +1,9 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : main
-## Description : It's just the initial of my repository 
+## Branch : bento-grid
+## Description : making bento grid design but randomly generated 
+>>>>>>> bento-grid
 
 <hr />
 
