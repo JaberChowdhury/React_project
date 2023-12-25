@@ -8,6 +8,10 @@
 - Actually I will save my practices here
 
 **Clone the repository**
-> ``` bash 
-git clone
+``` bash 
+git clone https://github.com/JaberChowdhury/React_project
+```
+**or**
+```bash
+gh repo clone JaberChowdhury/React_project
 ```
