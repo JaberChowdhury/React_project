@@ -1,8 +1,8 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : master
-## Description : this repo is empty ⚡️
+## Branch : scroll-animation-css
+## Description : Making scroll animation using only css with reactjs
 
 <hr />
 
