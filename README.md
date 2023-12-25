@@ -1,8 +1,8 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : main
-## Description : It's just the initial of my repository 
+## Branch : master
+## Description : this repo is empty ⚡️
 
 <hr />
 
