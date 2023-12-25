@@ -3,10 +3,13 @@ import { cn } from "@/lib/utils";
 
 interface propsType {
   children: React.ReactNode;
+  className?: string;
 }
 
-const Article = ({ children }: propsType) => {
-  return <article>{children}</article>;
+const Article = ({ children, className }: propsType) => {
+  return (
+    <article className={cn("p-2 text-squise", className)}>{children}</article>
+  );
 };
 
 export default Article;
