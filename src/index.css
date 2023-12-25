@@ -7,16 +7,19 @@
   font-family: "Rubik", sans-serif;
   transition:
     opacity 100ms ease,
+    width 100ms ease,
     transform 100ms ease,
-    border-radius 100ms ease,
-    left 100ms ease;
+    border-radius 100ms ease;
 }
 
 body {
   @apply bg-gradient-to-br from-gray-700 via-gray-900 to-black;
+
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
-.fade-up {
+#fade-up {
   opacity: 0;
   transform: scale(0);
   border-radius: 50%;
@@ -29,21 +32,21 @@ body {
 @keyframes fade-up {
   to {
     opacity: 1;
-    border-radius: 0%;
+    border-radius: 1%;
     transform: scale(1);
   }
 }
 
-.text-squise {
-  color: white;
-  left: -100px;
-  animation: text-squise linear forwards;
-  animation-timeline: view();
-  animation-range: entry 50px;
+#indicator {
+  width: 100%;
+  transform: scaleX(0);
+  animation: indicator linear;
+  transform-origin: left;
+  animation-timeline: scroll();
 }
 
-@keyframes text-squise {
+@keyframes indicator {
   to {
-    left: 0px;
+    transform: scaleX(1);
   }
 }
