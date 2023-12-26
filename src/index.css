@@ -73,4 +73,13 @@
   body {
     @apply yesbg-background yestext-foreground;
   }
+  #svg {
+    stroke-dasharray: 0 0;
+    animation: svg linear 5s forwards;
+  }
+  @keyframes svg {
+    to {
+      stroke-dasharray: 2000 2000;
+    }
+  }
 }
