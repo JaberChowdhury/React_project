@@ -1,9 +1,9 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : start
+## Branch : practise-svg
 
-## Description : starter code of my react projects
+## Description : let's play with svg
 
 <hr />
 
