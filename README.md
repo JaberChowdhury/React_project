@@ -1,8 +1,8 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : master
-## Description : this repo is empty ⚡️
+## Branch : others
+## Description : saving other stuf (not react project)
 
 <hr />
 
