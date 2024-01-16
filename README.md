@@ -1,9 +1,11 @@
 <h1 align="center">Rract-project</h1>
 <hr />
 
-## Branch : start
+## Branch : file-based-route-demo
 
-## Description : starter code of my react projects
+## Description : A reactjs project setup with file based routing
+
+## source : https://github.com/oedotme/generouted.git
 
 <hr />
 
