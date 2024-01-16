@@ -1,21 +1,26 @@
-import { Outlet } from 'react-router-dom'
-import { Modals } from '@generouted/react-router'
+// src/pages/_app.tsx
 
-import { Routes, Container } from '@/components'
+import { Outlet } from "react-router-dom";
+import { Modals } from "@generouted/react-router";
 
-const source = import.meta.url
+import { useModals } from "../router";
 
 export default function App() {
+  const modals = useModals();
+
   return (
-    <section className="flex min-h-screen bg-slate-50 text-slate-700">
-      <main className="container mx-auto flex min-h-full flex-1 space-x-10 p-8">
-        <Routes />
-        <Container source={source}>
-          <Outlet />
-        </Container>
+    <section>
+      <header>
+        <nav>navigation</nav>
+        <button onClick={() => modals.open("/info")}>Open modal</button>
+        <button onClick={() => modals.close()}>close modal</button>
+      </header>
+
+      <main>
+        <Outlet />
       </main>
 
       <Modals />
     </section>
-  )
+  );
 }

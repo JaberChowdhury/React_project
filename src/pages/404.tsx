@@ -1,7 +1,5 @@
-import { Container } from '@/components'
+const notfound = () => {
+  return <div>notfound</div>;
+};
 
-const source = import.meta.url
-
-export default function NotFound() {
-  return <Container source={source} />
-}
+export default notfound;

@@ -1,7 +1,5 @@
-import { Container } from '@/components'
+const Home = () => {
+  return <h1>Home</h1>;
+};
 
-const source = import.meta.url
-
-export default function Home() {
-  return <Container source={source} />
-}
+export default Home;
