@@ -5,7 +5,6 @@
 
 ## Description : starter code for react project with file based routing
 
-
 <hr />
 
 ## About
