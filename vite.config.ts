@@ -21,13 +21,10 @@ export default defineConfig({
       customChunk: (args) => {
         // files into pages directory is export in single files
         let { file, id, moduleId, root } = args;
-        if (
-          file.startsWith("src/pages/") ||
-          file.startsWith("src/components/") ||
-          file.startsWith("src/hooks/")
-        ) {
-          file = file.substring(4);
-          file = file.replace(/\.[^.$]+$/, "");
+        const srcIndex = file.indexOf("src/");
+        if (srcIndex !== -1) {
+          file = file.substring(srcIndex + 4); // +4 to include 'src/'
+          file = file.replace(/\.[^.$]+$/, ""); // Remove file extension
           return file;
         }
         return null;
