@@ -21,18 +21,15 @@ export default defineConfig({
       customChunk: (args) => {
         // files into pages directory is export in single files
         let { file, id, moduleId, root } = args;
-        const srcIndex = file.indexOf("src/");
-        if (srcIndex !== -1) {
-          file = file.substring(srcIndex + 4); // +4 to include 'src/'
-          file = file.replace(/\.[^.$]+$/, ""); // Remove file extension
+        if (file.startsWith("src/pages/")) {
+          file = file.substring(4);
+          file = file.replace(/\.[^.$]+$/, "");
           return file;
         }
         return null;
       },
       customSplitting: {
-        // `react` and `react-dom` will be bundled together in the `react-vendor` chunk (with their dependencies, such as object-assign)
         "react-vendor": ["/node_modules/react", "/node_modules/react-dom"],
-        // Any file that includes `utils` in src dir will be bundled in the `utils` chunk
         utils: [/src\/utils/],
       },
     }),
