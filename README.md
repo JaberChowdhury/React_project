@@ -1,4 +1,4 @@
-<h1 align="center">Rract-project</h1>
+<h1 align="center">React-project</h1>
 <hr />
 
 ## Branch : custom_selector
