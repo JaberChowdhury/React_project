@@ -5,7 +5,6 @@
 
 ## Description : making bento grid design but randomly generated
 
-> > > > > > > bento-grid
 
 <hr />
 
