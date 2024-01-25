@@ -1,44 +1,44 @@
 export default [
   {
-    title : "Home",
+    title: "Home",
     description: "Home page of this website",
-    to : "/",
-    icon : "IoHomeSharp"
+    to: "/",
+    icon: "IoHomeSharp",
   },
   {
-    title : "Add todos",
+    title: "Add todos",
     description: "Add a todo",
-    to : "/add",
-    icon : "IoMdAddCircle"
+    to: "/todos/add",
+    icon: "IoMdAddCircle",
   },
   {
-    title : "Todos",
+    title: "Todos",
     description: "Todos page",
-    to : "/todos",
-    icon : "FcTodoList"
+    to: "/todos",
+    icon: "FcTodoList",
   },
   {
-    title : "Todo (random)",
+    title: "Todo (random)",
     description: "Each todos page",
-    to : "/todos/",
-    icon : "RiTodoLine"
+    to: "/todos/random",
+    icon: "RiTodoLine",
   },
   {
-    title : "Bin",
+    title: "Bin",
     description: "Deleted todos page",
-    to : "/bin",
-    icon : "RiDeleteBin3Fill"
+    to: "/todos/bin",
+    icon: "RiDeleteBin3Fill",
   },
   {
-    title : "Deleted todo (random)",
+    title: "Deleted todo (random)",
     description: "Each deleted todos page",
-    to : "/bin/",
-    icon : "IoTrashBinSharp"
+    to: "todos/bin/random",
+    icon: "IoTrashBinSharp",
   },
   {
-    title : "Themes",
+    title: "Themes",
     description: "Change theme to your favourite one",
-    to : "/theme",
-    icon : "FaThemeisle"
+    to: "/theme",
+    icon: "FaThemeisle",
   },
-  ]
+];

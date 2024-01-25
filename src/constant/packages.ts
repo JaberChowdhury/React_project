@@ -2,11 +2,17 @@ const data = JSON.stringify(
   {
     dependencies: {
       "@generouted/react-router": "^1.18.2",
+      "@hookform/resolvers": "^3.3.4",
+      "@nanostores/react": "^0.7.1",
       clsx: "^2.1.0",
+      nanostores: "^0.9.5",
       react: "^18.2.0",
       "react-dom": "^18.2.0",
+      "react-hook-form": "^7.49.3",
+      "react-icons": "^5.0.1",
       "react-router-dom": "^6.21.3",
       "tailwind-merge": "^2.2.1",
+      zod: "^3.22.4",
     },
     devDependencies: {
       "@types/node": "^20.11.6",
@@ -28,7 +34,7 @@ const data = JSON.stringify(
     },
   },
   null,
-  4,
+  2,
 );
 
 export default data;

@@ -3,28 +3,27 @@ import React from "react";
 
 const Clock = () => {
   const { hour, minute, second } = useTime();
-  console.log({ hour, minute, second });
+
+  const units = [
+    { label: "Hours", value: hour },
+    { label: "Minutes", value: minute },
+    { label: "Seconds", value: second },
+  ];
 
   return (
     <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": hour } as React.CSSProperties}></span>
-        </span>
-        hours
-      </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": minute } as React.CSSProperties}></span>
-        </span>
-        min
-      </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-        <span className="countdown font-mono text-5xl">
-          <span style={{ "--value": second } as React.CSSProperties}></span>
-        </span>
-        sec
-      </div>
+      {units.map((unit) => (
+        <div key={unit.label} className="btn btn-ghost">
+          <div className="flex rounded flex-col p-2 bg-neutral text-neutral-content">
+            {unit.label}
+            <span className="countdown font-mono text-5xl">
+              <span
+                style={{ "--value": unit.value } as React.CSSProperties}
+              ></span>
+            </span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

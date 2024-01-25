@@ -5,6 +5,7 @@ const useTime = () => {
     hour: new Date().getHours(),
     minute: new Date().getMinutes(),
     second: new Date().getSeconds(),
+    millisecond: new Date().getMilliseconds(),
   });
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const useTime = () => {
         hour: new Date().getHours(),
         minute: new Date().getMinutes(),
         second: new Date().getSeconds(),
+        millisecond: new Date().getMilliseconds(),
       });
     }, 1000);
     return () => clearInterval(interval);
