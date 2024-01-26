@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import navigation from "@/constant/navigation";
 import Icon from "./Icon";
 import { useEffect } from "react";
-import $theme from "@/stores/theme";
 import { useStore } from "@nanostores/react";
-import themeData from "@/constant/themeData";
 import Gradienttext from "@/components/Gradienttext";
+import Themelist from "@/components/Themelist";
+import $theme from "@/stores/theme";
 
 export default function Navbar() {
   const theme = useStore($theme);
@@ -13,12 +13,11 @@ export default function Navbar() {
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
-
   return (
     <nav className="navbar sticky top-0 z-30 bg-base-100/50 backdrop-blur-md">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -51,7 +50,7 @@ export default function Navbar() {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl">
-          <Gradienttext className="text-3xl" text={"CURD_"} />
+          <Gradienttext className="text-3xl" text={"CRUD_"} />
         </Link>
       </div>
       <div className="navbar-end mr-4">
@@ -63,23 +62,13 @@ export default function Navbar() {
             )?.showModal()
           }
         >
-          {theme}
+          <Gradienttext text={theme} />
         </button>
       </div>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg">Select theme</h3>
-          <div className="flex justify-between items-center flex-wrap relative">
-            {themeData.map((tag) => (
-              <div
-                key={tag}
-                onClick={() => $theme.set(tag)}
-                className="w-20 m-2"
-              >
-                {tag}
-              </div>
-            ))}
-          </div>
+          <Themelist />
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>
