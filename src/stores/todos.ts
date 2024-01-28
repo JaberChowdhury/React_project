@@ -1,5 +1,5 @@
-import { atom } from "nanostores";
 import { Todo } from "./Types";
+import { persistentAtom } from "@nanostores/persistent";
 
 const initialState: Todo[] = [
   {
@@ -10,7 +10,9 @@ const initialState: Todo[] = [
     checked: false,
   },
 ];
-
-const $todos = atom(initialState);
+const $todos = persistentAtom<Todo[]>("todos", initialState, {
+  encode: JSON.stringify,
+  decode: JSON.parse,
+});
 
 export default $todos;
