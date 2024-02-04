@@ -1,13 +1,18 @@
+// src/pages/_app.tsx
+
 import { Outlet } from "react-router-dom";
-import Navbar from "@/components/Navbar";
+import CssBaseline from "@mui/material/CssBaseline";
+
+// mui components
+// import { Container } from "@mui/material";
 
 export default function App() {
   return (
-    <section>
-      <Navbar />
-      <main className="w-full min-h-screen flex items-center flex-col relative  px-2">
+    <>
+      <CssBaseline />
+      <main className="bg-pattern">
         <Outlet />
       </main>
-    </section>
+    </>
   );
 }

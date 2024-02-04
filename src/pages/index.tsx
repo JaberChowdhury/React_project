@@ -1,16 +1,13 @@
-import Hero from "@/components/Hero";
-import Code from "@/components/Code";
-import packages from "@/constant/packages";
-import Useful from "@/components/Useful";
-export default function App() {
+import { Link } from "react-router-dom";
+
+const Home = () => {
   return (
-    <div className="w-full min-h-screen flex items-center flex-col relative">
-      <Hero />
-      <Useful />
-      <div className="card rounded p-4 w-[390px] md:w-full">
-        <h2 className="card-title">Dependency of this project</h2>
-        <Code hl={[3, 10, 14, 24]} code={packages} />
-      </div>
+    <div>
+      <div>Awesome</div>
+      <Link to="/colors">Colors</Link>
+      <Link to="/quotes">Quotes</Link>
     </div>
   );
-}
+};
+
+export default Home;
