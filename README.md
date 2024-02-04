@@ -3,7 +3,7 @@
 
 ## Branch : redux-toolkit-data-fetching
 
-## Description : Fetching data with redux-toolkit and axios 
+## Description : Fetching data with redux-toolkit and axios
 
 <hr />
 
