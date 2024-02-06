@@ -1,81 +1,68 @@
-import { Link } from "react-router-dom";
-import navigation from "@/constant/navigation";
-import Icon from "./Icon";
-import { useEffect } from "react";
-import { useStore } from "@nanostores/react";
-import Gradienttext from "@/components/Gradienttext";
-import Themelist from "@/components/Themelist";
-import $theme from "@/stores/theme";
+import {
+  Box,
+  BottomNavigation,
+  BottomNavigationAction,
+  Paper,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import { ViewList, Home, AddCircle, Settings } from "@mui/icons-material";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import Transition from "./Transition";
 
 export default function Navbar() {
-  const theme = useStore($theme);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+  const { pathname } = useLocation();
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
-    <nav className="navbar sticky top-0 z-30 bg-base-100/50 backdrop-blur-md">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu steps steps-vertical menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-52"
-          >
-            {navigation.map((data) => {
-              return (
-                <li className="step" key={data.title}>
-                  <Link to={data.to}>
-                    <Icon icon={data.icon || ""} />
-                    {data.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <Link to="/" className="btn btn-ghost text-xl">
-          <Gradienttext className="text-3xl" text={"CRUD_"} />
-        </Link>
-      </div>
-      <div className="navbar-end mr-4">
-        <button
-          className="btn"
-          onClick={() =>
-            (
-              document.getElementById("my_modal_4") as HTMLDialogElement | null
-            )?.showModal()
-          }
-        >
-          <Gradienttext text={theme} />
-        </button>
-      </div>
-      <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Select theme</h3>
-          <Themelist />
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </nav>
+    <Box sx={{ pb: .5 }}>
+      <Paper
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        elevation={3}
+      >
+        <BottomNavigation>
+          {pathname !== "/" && (
+            <BottomNavigationAction label="Home" icon={<Home />} />
+          )}
+          <BottomNavigationAction label="ViewList" icon={<ViewList />} />
+          {pathname !== "/add" && (
+          <BottomNavigationAction label="AddCircle" icon={<AddCircle />} />
+          )}
+          <BottomNavigationAction
+            onClick={handleClickOpen}
+            label="Settings"
+            icon={<Settings />}
+          />
+        </BottomNavigation>
+      </Paper>
+
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>Settings</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Chnages settings from
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 }

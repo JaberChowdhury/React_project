@@ -1,16 +1,52 @@
-import Hero from "@/components/Hero";
-import Code from "@/components/Code";
-import packages from "@/constant/packages";
-import Useful from "@/components/Useful";
-export default function App() {
+import { Box, List, ListItem, ListItemText, Grid, Stack, Container,Typography } from "@mui/material";
+import {useTheme} from "@mui/material/styles"
+import {Home} from "@mui/icons-material"
+
+
+const Index = () => {
+  
+  const theme = useTheme()
+  console.log({theme})
+  
+  
+  
   return (
-    <div className="w-full min-h-screen flex items-center flex-col relative">
-      <Hero />
-      <Useful />
-      <div className="card rounded p-4 w-[390px] md:w-full">
-        <h2 className="card-title">Dependency of this project</h2>
-        <Code hl={[3, 10, 14, 24]} code={packages} />
-      </div>
-    </div>
+    <Box>
+<Stack
+  sx={{
+    minHeight: "100vh"
+  }}
+  direction="column"
+  justifyContent="center"
+  alignItems="center"
+  spacing={3}
+>
+         <Typography sx={{fontWeight: "bold",  color : theme.palette.info.main }} variant="h2">Notebook</Typography>
+         <Typography sx={{color : theme.palette.text.primary, textAlign: "center"}}>A fully type safe notebook with search functionality and keyword support !!</Typography>
+      </Stack>
+      <Stack
+  sx={{
+    minHeight: "90vh"
+  }}
+      >
+      <Container>
+         <Grid item xs={12} md={6}>
+          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+            Key features
+          </Typography>
+            <List dense={true}>
+                <ListItem>
+                    <Home />
+                  <ListItemText
+                    primary="Single-line item"
+                   >This is realy awesome</ListItemText>
+                </ListItem>
+            </List>
+        </Grid>
+      </Container>
+      </Stack>
+    </Box>
   );
-}
+};
+
+export default Index;

@@ -1,13 +1,27 @@
 import { Outlet } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Container, CssBaseline } from "@mui/material";
+import { useSelector } from "react-redux";
+import { themeSelector } from "@/features/theme/themeSlice";
 import Navbar from "@/components/Navbar";
 
 export default function App() {
+  const { theme } = useSelector(themeSelector);
+
+  const themeData = createTheme({
+    palette: {
+      mode: theme,
+    },
+  });
   return (
-    <section>
-      <Navbar />
-      <main className="w-full min-h-screen flex items-center flex-col relative  px-2">
-        <Outlet />
-      </main>
-    </section>
+    <ThemeProvider theme={themeData}>
+      <Container>
+        <CssBaseline />
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+      </Container>
+    </ThemeProvider>
   );
 }
