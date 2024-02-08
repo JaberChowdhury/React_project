@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Quotes } from "@/types/quotes";
 
@@ -33,10 +34,13 @@ const quotesSlice = createSlice({
     builder.addCase(fetchQuotes.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchQuotes.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.quotes = action.payload;
-    });
+    builder.addCase(
+      fetchQuotes.fulfilled,
+      (state, action: PayloadAction<Quotes[]>) => {
+        state.isLoading = false;
+        state.quotes = action.payload;
+      },
+    );
     builder.addCase(fetchQuotes.rejected, (state, action) => {
       state.isLoading = false;
       state.quotes = [];

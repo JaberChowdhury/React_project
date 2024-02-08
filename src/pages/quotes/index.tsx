@@ -1,12 +1,15 @@
 import { Button, Card, Typography } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/app/hook";
 import { quotesSelcetor, fetchQuotes } from "@/features/quotes/quotesSlice";
 import { motion } from "framer-motion";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const { quotes, isLoading, error } = useSelector(quotesSelcetor);
-  console.log({ quotes, isLoading, error });
+  const dispatch = useAppDispatch();
+  const { quotes, isLoading, error } = useAppSelector(quotesSelcetor);
+
+  const handleClick = () => {
+    dispatch(fetchQuotes());
+  };
 
   return (
     <motion.div
@@ -15,14 +18,9 @@ const Home = () => {
       exit={{ opacity: 0 }}
     >
       <div>Quotes</div>
-      <Button
-        disabled={isLoading}
-        onClick={() => dispatch(fetchQuotes())}
-        variant="contained"
-      >
+      <Button disabled={isLoading} onClick={handleClick} variant="contained">
         Fetch Quotes
       </Button>
-
       {!isLoading &&
         quotes?.map((data) => {
           return (
@@ -39,6 +37,7 @@ const Home = () => {
             </Card>
           );
         })}
+      {error && <Typography>{JSON.stringify(error)}</Typography>}
     </motion.div>
   );
 };
