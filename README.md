@@ -1,9 +1,9 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : todo-curd-app
+## Branch : all-quran-project
 
-## Description : a curd program with react, nanostores, daisy-ui, typescript
+## Description : fetching data to provide al quran reading
 
 <hr />
 

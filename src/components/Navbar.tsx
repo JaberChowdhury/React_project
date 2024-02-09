@@ -1,81 +1,85 @@
-import { Link } from "react-router-dom";
-import navigation from "@/constant/navigation";
-import Icon from "./Icon";
-import { useEffect } from "react";
-import { useStore } from "@nanostores/react";
-import Gradienttext from "@/components/Gradienttext";
-import Themelist from "@/components/Themelist";
-import $theme from "@/stores/theme";
+import {
+  Typography,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+} from "@mui/material";
+import Glassbox from "./Glassbox";
+import { useTheme } from "@mui/material/styles";
+import { Menu, Cancel } from "@mui/icons-material";
+import { useState } from "react";
+import Transition from "./Transition";
+import Dialoguecontents from "./Dialoguecontents";
 
-export default function Navbar() {
-  const theme = useStore($theme);
+const Navbar = () => {
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClick = () => {
+    setOpen(!open);
+    handleClickOpen();
+  };
+
   return (
-    <nav className="navbar sticky top-0 z-30 bg-base-100/50 backdrop-blur-md">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu steps steps-vertical menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded w-52"
-          >
-            {navigation.map((data) => {
-              return (
-                <li className="step" key={data.title}>
-                  <Link to={data.to}>
-                    <Icon icon={data.icon || ""} />
-                    {data.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <Link to="/" className="btn btn-ghost text-xl">
-          <Gradienttext className="text-3xl" text={"CRUD_"} />
-        </Link>
-      </div>
-      <div className="navbar-end mr-4">
-        <button
-          className="btn"
-          onClick={() =>
-            (
-              document.getElementById("my_modal_4") as HTMLDialogElement | null
-            )?.showModal()
-          }
+    <Glassbox
+      style={{
+        padding: "5px",
+        position: "sticky",
+        top: "10px",
+        borderRadius: theme.shape.borderRadius,
+      }}
+    >
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingLeft: "15px",
+          paddingRight: "15px",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ color: theme.palette.info.main, fontWeight: "bold" }}
         >
-          <Gradienttext text={theme} />
-        </button>
-      </div>
-      <dialog id="my_modal_4" className="modal">
-        <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">Select theme</h3>
-          <Themelist />
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </nav>
+          QuranDB
+        </Typography>
+        <div onClick={handleClick}>{open ? <Cancel /> : <Menu />}</div>
+      </nav>
+
+      <Glassbox>
+        <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleClose}
+          sx={{
+            background: "transparent",
+            backgroundColor: "transparent",
+          }}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle sx={{ minWidth: "300px" }}>Menu</DialogTitle>
+          <DialogContent>
+            <Dialoguecontents />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Close</Button>
+          </DialogActions>
+        </Dialog>
+      </Glassbox>
+    </Glassbox>
   );
-}
+};
+
+export default Navbar;

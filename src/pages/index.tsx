@@ -1,16 +1,57 @@
-import Hero from "@/components/Hero";
-import Code from "@/components/Code";
-import packages from "@/constant/packages";
-import Useful from "@/components/Useful";
-export default function App() {
+import { suraListSelector } from "@/features/suraList/suraListSlice";
+import { useAppSelector } from "@/app/hook";
+import { Grid } from "@mui/material";
+import Suracard from "@/components/Suracard";
+import { useState, useEffect } from "react";
+import { Box, CircularProgress } from "@mui/material";
+
+const Home = () => {
+  const { surah } = useAppSelector(suraListSelector);
+
   return (
-    <div className="w-full min-h-screen flex items-center flex-col relative">
-      <Hero />
-      <Useful />
-      <div className="card rounded p-4 w-[390px] md:w-full">
-        <h2 className="card-title">Dependency of this project</h2>
-        <Code hl={[3, 10, 14, 24]} code={packages} />
-      </div>
-    </div>
+    <Grid
+      container
+      direction="column"
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      sx={{
+        paddingTop: "20px",
+        paddingBottom: "20px",
+      }}
+    >
+      {surah.map((sura) => {
+        return <Suracard key={sura.sura_no} sura={sura} />;
+      })}
+    </Grid>
   );
-}
+};
+const App = () => {
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(true);
+    }, 1000);
+  }, []);
+  return (
+    <>
+      {load ? (
+        <Home />
+      ) : (
+        <Box
+          style={{
+            width: "100%",
+            minHeight: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
+    </>
+  );
+};
+
+export default App;
