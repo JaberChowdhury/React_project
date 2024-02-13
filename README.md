@@ -1,9 +1,9 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : todo-curd-app
+## Branch : todo-curd-app-2.0
 
-## Description : a curd program with react, nanostores, daisy-ui, typescript
+## Description : a curd program with react, nanostores, daisy-ui, typescript with reusable form
 
 <hr />
 

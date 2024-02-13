@@ -11,7 +11,7 @@ export default function Navbar() {
   const theme = useStore($theme);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme || "sunset");
   }, [theme]);
   return (
     <nav className="navbar sticky top-0 z-30 bg-base-100/50 backdrop-blur-md">

@@ -1,5 +1,5 @@
-import { atom } from "nanostores";
+import { persistentAtom } from "@nanostores/persistent";
 
-const $theme = atom("sunset");
+const $theme = persistentAtom<string>("theme", "sunset");
 
 export default $theme;
