@@ -36,6 +36,12 @@ export default [
     icon: "IoTrashBinSharp",
   },
   {
+    title: "Components code",
+    description: "Source code of components of this project",
+    to: "/code",
+    icon: "",
+  },
+  {
     title: "Themes",
     description: "Change theme to your favourite one",
     to: "/theme",

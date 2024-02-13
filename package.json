@@ -11,6 +11,7 @@
     "wow": "npx prettier -w --cache ."
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.2",
     "@generouted/react-router": "^1.18.2",
     "@hookform/resolvers": "^3.3.4",
     "@nanostores/persistent": "^0.9.1",
