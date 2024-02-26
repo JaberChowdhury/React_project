@@ -1,8 +1,8 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : master
-## Description : this repo is empty ⚡️
+## Branch : color-web
+## Description : Building a collection of tools to work with colors
 
 <hr />
 
