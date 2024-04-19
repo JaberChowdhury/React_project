@@ -22,6 +22,7 @@ const App = () => {
   ]);
   const [winner, setWinner] = useState(null);
   const [currentValue, setCurrentValue] = useState("");
+  const [values, setValues] = useState([]);
 
   const findWinner = () => {
     for (let i = 0; i < block.length; i++) {
@@ -126,13 +127,6 @@ const App = () => {
   };
 
   const handleClick = (d) => {
-    if (currentValue === "") {
-      setCurrentValue("X");
-    } else if (currentValue === "X") {
-      setCurrentValue("O");
-    } else if (currentValue === "O") {
-      setCurrentValue("X");
-    }
     const id = d.id;
     const newBlock = block.map((b) => {
       if (b.id === id) {
@@ -140,11 +134,13 @@ const App = () => {
           return {
             id: b.id,
             value: "X",
+            color: "transparent",
           };
         } else if (b.value === null) {
           return {
             id: b.id,
-            value: currentValue === "X" ? "O" : "X",
+            value: "O",
+            color: "transparent",
           };
         } else {
           return b;
@@ -166,6 +162,7 @@ const App = () => {
         {block.map((d, index) => {
           return (
             <button
+              disabled={false}
               onClick={() => handleClick(d)}
               key={index}
               style={{
@@ -178,6 +175,7 @@ const App = () => {
           );
         })}
       </div>
+      <p>{JSON.stringify({ block })}</p>
       <p>{JSON.stringify({ currentValue })}</p>
       <p>{JSON.stringify({ winner })}</p>
     </div>
