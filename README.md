@@ -1,7 +1,7 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : tic-tac-toe( under construction !! )
+## Branch : tic-tac-toe-v1
 
 ## Description : creating a tic-tac-toe game
 
