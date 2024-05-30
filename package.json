@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "react-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,33 +7,28 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fmt": "pnpm dlx prettier --cache -w ."
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.302.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fontsource/roboto": "^5.0.13",
+    "@mui/material": "^5.15.19",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.0",
-    "tailwindcss-animate": "^1.0.7"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "postcss": "^8.4.32",
-    "prettier": "^3.1.1",
-    "tailwindcss": "^3.4.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.2.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.2.0"
   }
 }

@@ -1,9 +1,9 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : start
+## Branch : start-material
 
-## Description : starter code of my react projects
+## Description : starter code of react project with material ui
 
 <hr />
 
