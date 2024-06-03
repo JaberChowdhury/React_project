@@ -1,9 +1,9 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : start-material
+## Branch : tanstack
 
-## Description : starter code of react project with material ui
+## Description : practising tanstack library
 
 <hr />
 
