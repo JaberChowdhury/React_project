@@ -3,12 +3,12 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { Typography } from "@mui/material";
+import Todos from "./components/Todos";
 
 const App = () => {
   return (
     <div>
-      <Typography variant="h1">App</Typography>
+      <Todos />
     </div>
   );
 };
