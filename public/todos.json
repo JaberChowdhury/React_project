@@ -39,7 +39,7 @@
     {
       "title": "Basic redux",
       "description": "I have to complete Basic redux",
-      "checked": "false",
+      "checked": false,
       "id": "54ad7dee-2d34-401e-92ec-6bc9c5d874fb",
       "lastUpdated": "8/12/2023, 12:30:32 AM"
     },
@@ -60,7 +60,7 @@
     {
       "title": "ThreeJs",
       "description": "I have to learn threeJs to create 3d animation to make my website looks better",
-      "checked": "false",
+      "checked": false,
       "id": "3cac1432-f0a1-4fe9-ae6d-c7bc567ad2d4",
       "lastUpdated": "8/12/2023, 12:34:16 AM"
     },
@@ -74,35 +74,35 @@
     {
       "title": "Math library",
       "description": " Learn about Math library in javascript",
-      "checked": "false",
+      "checked": false,
       "id": "ab0cbe57-2359-4b53-af24-d9c366670433",
       "lastUpdated": "8/12/2023, 12:36:01 AM"
     },
     {
       "title": "watch anime",
       "description": "Need to watch some anime Castlevania s04 and one punch man s02",
-      "checked": "false",
+      "checked": false,
       "id": "977d61b8-4c0d-4bd7-a857-2195cc04a2ca",
       "lastUpdated": "8/12/2023, 12:36:50 AM"
     },
     {
       "title": "RegExp",
       "description": "Learn some regular expressions to make life easier ",
-      "checked": "false",
+      "checked": true,
       "id": "ffecaa64-17c1-46a4-808c-52e61adb005c",
       "lastUpdated": "15/08/2023, 15:38:42"
     },
     {
       "title": "Tailwind Css",
       "description": "Learn productive tailwind css [1] custom class setup [2] other's css property uses",
-      "checked": "false",
+      "checked": false,
       "id": "29e5f993-4627-441f-a979-86600cd0347d",
       "lastUpdated": "8/12/2023, 12:38:07 AM"
     },
     {
       "title": "Framar Motion",
       "description": "I have to learn framar motion to make a better transition for my website ",
-      "checked": "false",
+      "checked": false,
       "id": "4f255120-c509-426b-bf33-1f37fa791485",
       "lastUpdated": "8/12/2023, 12:38:51 AM"
     },
@@ -130,7 +130,7 @@
     {
       "title": "Axios Tutorial ",
       "description": "watch some tutorial about axios for learning CRUD operation",
-      "checked": "false",
+      "checked": false,
       "id": "b32d5eab-60b5-4d4e-b6ed-cfa26da7f725",
       "lastUpdated": "8/12/2023, 11:54:34 AM"
     },
@@ -140,13 +140,6 @@
       "checked": true,
       "id": "6b10de14-7fa7-40c8-8f0f-df0deec214c2",
       "lastUpdated": "15/08/2023, 16:00:14"
-    },
-    {
-      "title": "☄️☄️☄️☄️☄️☄️",
-      "description": "/* Button.css */\n@import 'tailwindcss/base';\n@import 'tailwindcss/components';\n@import 'tailwindcss/utilities';\n\n.button-custom {\n  @apply bg-green-500 text-white font-bold py-2 px-4 rounded;\n}\n\n.button-custom:hover {\n  @apply bg-green-600;\n}\nconst axios = require('axios');\n\n// Replace 'BASE_URL' with the actual API endpoint\nconst BASE_URL = 'https://api.example.com';\n\n// Create operation (POST)\nconst createData = async (data) => {\n  try {\n    const response = await axios.post(`${BASE_URL}/items`, data);\n    return response.data;\n  } catch (error) {\n    console.error('Error creating data:', error);\n  }\n};\n\n// Read operation (GET)\nconst readData = async (itemId) => {\n  try {\n    const response = await axios.get(`${BASE_URL}/items/${itemId}`);\n    return response.data;\n  } catch (error) {\n    console.error('Error reading data:', error);\n  }\n};\n\n// Update operation (PUT or PATCH)\nconst updateData = async (itemId, newData) => {\n  try {\n    const response = await axios.put(`${BASE_URL}/items/${itemId}`, newData);\n    return response.data;\n  } catch (error) {\n    console.error('Error updating data:', error);\n  }\n};\n\n// Delete operation (DELETE)\nconst deleteData = async (itemId) => {\n  try {\n    const response = await axios.delete(`${BASE_URL}/items/${itemId}`);\n    return response.data;\n  } catch (error) {\n    console.error('Error deleting data:', error);\n  }\n};\n\n// Example usage\n(async () => {\n  const newItem = await createData({ name: 'New Item' });\n  console.log('Created Item:', newItem);\n\n  const itemToRead = await readData(newItem.id);\n  console.log('Read Item:', itemToRead);\n\n  const updatedItem = await updateData(newItem.id, { name: 'Updated Item' });\n  console.log('Updated Item:', updatedItem);\n\n  const deletedItem = await deleteData(newItem.id);\n  console.log('Deleted Item:', deletedItem);\n})();\n/**\n*\n* 🫒 Title : My code base\n* 🫒 Description : code Description\n* 🫒 Author : Md Jaber Hossain Chowdhury\n* 🫒 Date : 06 July 2023\n*\n**/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git add . && git commit -m \"Project Submitted\" && git push origin master",
-      "checked": true,
-      "id": "54771369-3844-4906-b78d-68b18dae956a",
-      "lastUpdated": "16/08/2023, 12:55:13"
     }
   ]
 }

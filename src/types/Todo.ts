@@ -1,7 +1,7 @@
 export interface Todo {
   title: string;
   description: string;
-  checked: string;
+  checked: boolean;
   id: string;
   lastUpdated: string;
 }
