@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-const Todos = lazy(() => import("../components/Todos"));
-const Todosv2 = lazy(() => import("../components/Todosv2"));
+const Todos = lazy(() => import("../pages/Todos"));
+const Todosv2 = lazy(() => import("../pages/Todosv2"));
 const Home = lazy(() => import("../pages/Home"));
+const Layout = lazy(() => import("../Layouts/index"));
 
 const Loading = () => {
   return <div>Loading....</div>;
@@ -14,7 +15,9 @@ const routers = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<Loading />}>
-        <Home />
+        <Layout>
+          <Home />
+        </Layout>
       </Suspense>
     ),
   },
@@ -22,7 +25,9 @@ const routers = createBrowserRouter([
     path: "/todos",
     element: (
       <Suspense fallback={<Loading />}>
-        <Todos />
+        <Layout>
+          <Todos />
+        </Layout>
       </Suspense>
     ),
   },
@@ -30,7 +35,9 @@ const routers = createBrowserRouter([
     path: "/todosv2",
     element: (
       <Suspense fallback={<Loading />}>
-        <Todosv2 />
+        <Layout>
+          <Todosv2 />
+        </Layout>
       </Suspense>
     ),
   },

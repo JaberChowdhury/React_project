@@ -5,6 +5,7 @@ import "@fontsource/roboto/700.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 import { Container } from "@mui/material";
+// import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         paddingBottom: "10px",
       }}
     >
+      {/*  <Navbar /> */}
       <RouterProvider router={router} />
     </Container>
   );
