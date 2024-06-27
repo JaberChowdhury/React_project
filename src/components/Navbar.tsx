@@ -94,7 +94,13 @@ export default function Navbar(props: Props) {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button key={item.title} sx={{ color: "#fff" }}>
-                {item.title}
+                <ListItem disablePadding>
+            <Link to={item.path}>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
               </Button>
             ))}
           </Box>
