@@ -6,7 +6,7 @@ import generouted from "@generouted/react-router/plugin";
 
 export default defineConfig({
   plugins: [react(), generouted()],
-    resolve: {
+  resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
