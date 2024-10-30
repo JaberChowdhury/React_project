@@ -6,10 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+pnpm-lock.yaml
+package-lock.json
 
 node_modules
 dist
-dev-dist
 dist-ssr
 *.local
 
