@@ -1,9 +1,9 @@
 <h1 align="center">React-project</h1>
 <hr />
 
-## Branch : file-based-route-v1
+## Branch : text-analyser
 
-## Description : starter code of vite react with file base routing
+## Description : making a text analyser with fluentui 
 
 <hr />
 
