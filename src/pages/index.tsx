@@ -1,11 +1,11 @@
-import { Button, Spinner, PrimaryButton } from "@fluentui/react";
+import Textarea from "./components/Textarea";
+import Basicheader from "./components/Basicheader";
 
 const App = () => {
   return (
     <div>
-      <Button>Follow</Button>
-      <PrimaryButton>Follow</PrimaryButton>
-      <Spinner></Spinner>
+      <Basicheader />
+      <Textarea />
     </div>
   );
 };

@@ -3,7 +3,7 @@
 
 ## Branch : text-analyser
 
-## Description : making a text analyser with fluentui 
+## Description : making a text analyser with fluentui
 
 <hr />
 
