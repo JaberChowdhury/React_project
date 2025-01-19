@@ -6,9 +6,20 @@ import "@fontsource/roboto/700.css";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
+import { Container } from "@mui/material";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <Container
+      sx={{
+        width: "100vh",
+        minHeight:"100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <App />
+    </Container>
   </StrictMode>
 );
