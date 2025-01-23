@@ -17,7 +17,8 @@
     "@mui/styled-engine-sc": "^6.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.14"
+    "styled-components": "^6.1.14",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
