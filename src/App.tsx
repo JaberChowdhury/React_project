@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import useStore from "./store";
-import { useEffect } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 
 const App = () => {
   const {
@@ -38,31 +38,7 @@ const App = () => {
     setPassword,
   } = useStore();
 
-  console.log({
-    password,
-    password_length,
-    isNumber,
-    isEmoji,
-    isLowerCase,
-    isUpperCase,
-    isSpecialCharacter,
-    toggleNumber,
-    toggleLowerCase,
-    toggleSpecialCharac,
-    toggleEmoji,
-    toggleUpperCase,
-    increasePasswordLength,
-    decreasePasswordLength,
-    updatePasswordLength,
-    specialChar,
-    uppercase,
-    lowercase,
-    emojis,
-    numbers,
-    setPassword,
-  });
-
-  const generatePassword = () => {
+  const generatePassword = useCallback(() => {
     let dataArray: string[] = [];
     if (isNumber) {
       dataArray = [...dataArray, ...numbers];
@@ -83,23 +59,101 @@ const App = () => {
 
     for (let index = 0; index < password_length; index++) {
       const random_number = Math.floor(Math.random() * dataArray.length);
-      console.log({ random_number });
-      final_password += dataArray[Math.floor(Math.random() * dataArray.length)];
-      console.log(dataArray[random_number]);
+      final_password += dataArray[random_number];
     }
-    setPassword(final_password);
+
+    if (final_password !== password) {
+      setPassword(final_password);
+    }
     return final_password;
-  };
+  }, [
+    isNumber,
+    isEmoji,
+    isUpperCase,
+    isLowerCase,
+    isSpecialCharacter,
+    numbers,
+    emojis,
+    uppercase,
+    lowercase,
+    specialChar,
+    password_length,
+    password,
+    setPassword,
+  ]);
 
   useEffect(() => {
     generatePassword();
-  }, []);
+  }, [generatePassword]);
+
+  const handleSliderChange = useCallback(
+    (e: Event, value: number | number[]) => {
+      updatePasswordLength(Array.isArray(value) ? value[0] : value);
+    },
+    [updatePasswordLength]
+  );
+
+  const handleTextFieldChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      updatePasswordLength(Number(e.target.value));
+    },
+    [updatePasswordLength]
+  );
+
+  const sliderSx = useMemo(
+    () => ({
+      justifyContent: "space-between",
+      alignItems: "center",
+      gap: 3,
+    }),
+    []
+  );
+
+  const boxSx = useMemo(
+    () => ({
+      border: "1px solid",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
+      justifyContent: "center",
+    }),
+    []
+  );
+
+  const cardContentSx = useMemo(
+    () => ({
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    }),
+    []
+  );
+
+  const typographySx = useMemo(
+    () => ({
+      textAlign: "center",
+      border: "1px solid",
+    }),
+    []
+  );
+
+  const textFieldSx = useMemo(
+    () => ({
+      border: "1px solid",
+    }),
+    []
+  );
+
+  const stackSx = useMemo(
+    () => ({
+      direction: "row",
+      sx: sliderSx,
+    }),
+    [sliderSx]
+  );
+
   return (
     <Stack>
-      <Typography
-        variant="h6"
-        sx={{ textAlign: "center", border: "1px solid" }}
-      >
+      <Typography variant="h6" sx={typographySx}>
         {password}
       </Typography>
       <Card>
@@ -107,19 +161,11 @@ const App = () => {
           <CardContent>
             <Box>
               <Typography>Password length</Typography>
-              <Stack
-                direction="row"
-                sx={{
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: 3,
-                }}
-              >
+              <Stack direction="row" sx={sliderSx}>
                 <Slider
-                  onChange={(e) => updatePasswordLength(Number(e))}
+                  onChange={handleSliderChange}
                   value={password_length}
                   min={4}
-                  // step={1}
                   max={200}
                 />
                 <Button onClick={increasePasswordLength} variant="contained">
@@ -128,9 +174,9 @@ const App = () => {
 
                 <TextField
                   defaultValue={password_length}
-                  sx={{ border: "1px solid" }}
+                  sx={textFieldSx}
                   value={password_length}
-                  onChange={(e) => updatePasswordLength(Number(e.target.value))}
+                  onChange={handleTextFieldChange}
                   type="number"
                 />
                 <Button onClick={decreasePasswordLength} variant="contained">
@@ -139,61 +185,24 @@ const App = () => {
               </Stack>
             </Box>
           </CardContent>
-          <Box
-            sx={{
-              border: "1px solid",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
-              justifyContent: "center",
-            }}
-          >
-            <CardContent
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+          <Box sx={boxSx}>
+            <CardContent sx={cardContentSx}>
               <Typography>Number</Typography>
               <Switch checked={isNumber} onChange={toggleNumber} />
             </CardContent>
-            <CardContent
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <CardContent sx={cardContentSx}>
               <Typography>Emoji</Typography>
               <Switch checked={isEmoji} onChange={toggleEmoji} />
             </CardContent>
-            <CardContent
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <CardContent sx={cardContentSx}>
               <Typography>UpperCase</Typography>
               <Switch checked={isUpperCase} onChange={toggleUpperCase} />
             </CardContent>
-            <CardContent
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <CardContent sx={cardContentSx}>
               <Typography>LowerCase</Typography>
               <Switch checked={isLowerCase} onChange={toggleLowerCase} />
             </CardContent>
-            <CardContent
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <CardContent sx={cardContentSx}>
               <Typography>Special Character</Typography>
               <Switch
                 checked={isSpecialCharacter}
