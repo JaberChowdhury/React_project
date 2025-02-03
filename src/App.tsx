@@ -16,11 +16,6 @@ const App = () => {
           );
         })}
       </div>
-
-
-<div className="w-full">
-
-</div>
     </div>
   );
 };
