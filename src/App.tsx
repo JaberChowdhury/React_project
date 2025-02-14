@@ -92,7 +92,9 @@ const Tbody = ({ data }) => (
 
 const App = () => {
   const [jsonInput, setJsonInput] = useState("");
-  const [apiInput, setApiInput] = useState("");
+  const [apiInput, setApiInput] = useState(
+    "https://api.alquran.cloud/v1/page/1/en.asad"
+  );
   const [parsedData, setParsedData] = useState(null);
   const [error, setError] = useState("");
 
