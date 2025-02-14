@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { TextField } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -17,9 +17,29 @@ const darkTheme = createTheme({
 });
 
 // Function to render nested values properly
-const renderValue = (value) => {
+const renderValue = (value, depth = 0) => {
+  if (depth > 7) {
+    return "Too deep to display"; // Limit recursion depth
+  }
+
   if (Array.isArray(value)) {
-    return value.join(", "); // Display arrays as comma-separated values
+    return (
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableBody>
+            {value.map((item, index) => (
+              <TableRow key={index}>
+                <TableCell colSpan={2}>
+                  {typeof item === "object" && item !== null
+                    ? renderValue(item, depth + 1)
+                    : item}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
   } else if (typeof value === "object" && value !== null) {
     return (
       <TableContainer component={Paper}>
@@ -39,7 +59,7 @@ const renderValue = (value) => {
                       {nestedValue}
                     </a>
                   ) : (
-                    renderValue(nestedValue)
+                    renderValue(nestedValue, depth + 1)
                   )}
                 </TableCell>
               </TableRow>
@@ -72,10 +92,11 @@ const Tbody = ({ data }) => (
 
 const App = () => {
   const [jsonInput, setJsonInput] = useState("");
+  const [apiInput, setApiInput] = useState("");
   const [parsedData, setParsedData] = useState(null);
   const [error, setError] = useState("");
 
-  const handleInputChange = (e) => {
+  const handleJsonInputChange = (e) => {
     const inputValue = e.target.value;
     setJsonInput(inputValue);
 
@@ -85,6 +106,25 @@ const App = () => {
       setError("");
     } catch (err) {
       setError("Invalid JSON input");
+      setParsedData(null);
+    }
+  };
+
+  const handleApiInputChange = (e) => {
+    setApiInput(e.target.value);
+  };
+
+  const fetchDataFromApi = async () => {
+    try {
+      const response = await fetch(apiInput);
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      setParsedData(data);
+      setError("");
+    } catch (err) {
+      setError("Failed to fetch data from API");
       setParsedData(null);
     }
   };
@@ -106,12 +146,28 @@ const App = () => {
           multiline
           rows={4}
           value={jsonInput}
-          onChange={handleInputChange}
+          onChange={handleJsonInputChange}
           placeholder="Enter JSON data"
           error={!!error}
           helperText={error}
+          style={{ marginBottom: "20px" }}
         />
-        {parsedData && (
+        <TextField
+          fullWidth
+          value={apiInput}
+          onChange={handleApiInputChange}
+          placeholder="Enter API endpoint"
+          style={{ marginBottom: "20px" }}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={fetchDataFromApi}
+          style={{ marginBottom: "20px" }}
+        >
+          Fetch Data from API
+        </Button>
+        {parsedData ? (
           <TableContainer component={Paper} style={{ marginTop: "20px" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -123,6 +179,10 @@ const App = () => {
               <Tbody data={parsedData} />
             </Table>
           </TableContainer>
+        ) : (
+          <Typography variant="body1" color="textSecondary">
+            No data to display
+          </Typography>
         )}
       </div>
     </ThemeProvider>
