@@ -1,4 +1,4 @@
-import googleData from "./data.json";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { TextField } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -16,7 +17,7 @@ const darkTheme = createTheme({
 });
 
 // Function to render nested values properly
-const renderValue = (value: any) => {
+const renderValue = (value) => {
   if (Array.isArray(value)) {
     return value.join(", "); // Display arrays as comma-separated values
   } else if (typeof value === "object" && value !== null) {
@@ -59,11 +60,7 @@ const renderValue = (value: any) => {
 
 // Table body component
 const Tbody = ({ data }) => (
-  <TableBody
-    sx={{
-      my: 6,
-    }}
-  >
+  <TableBody sx={{ my: 6 }}>
     {Object.entries(data).map(([key, value], index) => (
       <TableRow key={index}>
         <TableCell>{key}</TableCell>
@@ -74,7 +71,23 @@ const Tbody = ({ data }) => (
 );
 
 const App = () => {
-  const data = googleData.items || []; // Ensure `items` exist
+  const [jsonInput, setJsonInput] = useState("");
+  const [parsedData, setParsedData] = useState(null);
+  const [error, setError] = useState("");
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setJsonInput(inputValue);
+
+    try {
+      const parsed = JSON.parse(inputValue);
+      setParsedData(parsed);
+      setError("");
+    } catch (err) {
+      setError("Invalid JSON input");
+      setParsedData(null);
+    }
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -83,28 +96,35 @@ const App = () => {
         style={{
           width: "100%",
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column",
           alignItems: "center",
+          padding: "20px",
         }}
       >
-        <Table>
-          {/* <thead>
-          <TableRow>
-          <TableHead>Key</TableHead>
-            <TableHead>Value</TableHead>
-          </TableRow>
-          </thead> */}
-          {data.length > 0 ? (
-            data.slice(0, 100).map((item, id) => <Tbody data={item} key={id} />)
-          ) : (
-            <tbody>
-              <TableRow>
-                <TableCell>No data available</TableCell>
-              </TableRow>
-            </tbody>
-          )}
-        </Table>
-      </div>{" "}
+        <TextField
+          fullWidth
+          multiline
+          rows={4}
+          value={jsonInput}
+          onChange={handleInputChange}
+          placeholder="Enter JSON data"
+          error={!!error}
+          helperText={error}
+        />
+        {parsedData && (
+          <TableContainer component={Paper} style={{ marginTop: "20px" }}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Key</TableCell>
+                  <TableCell>Value</TableCell>
+                </TableRow>
+              </TableHead>
+              <Tbody data={parsedData} />
+            </Table>
+          </TableContainer>
+        )}
+      </div>
     </ThemeProvider>
   );
 };
