@@ -1,8 +1,2 @@
 @import "tailwindcss";
-@tailwind utilities;
-
-/* ... */
-
-/* * {
-  border: 1px solid black;
-} */
+@plugin "daisyui";
