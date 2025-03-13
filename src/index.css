@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+::root {
+  --bg: #ccaea1;
+  --text: #5c544c;
+}
