@@ -1,0 +1,25 @@
+* {
+  border: 1px solid;
+}
+
+body {
+  background-color: rgb(177, 177, 121);
+}
+.country_container {
+  /* margin: 10px; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.each_country {
+  max-width: 300px;
+  min-width: 300px;
+  background-color: white;
+  padding: 10px 30px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
