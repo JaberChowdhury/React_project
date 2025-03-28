@@ -1,34 +1,38 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import { Card } from './components/ui/card';
-import { Button } from './components/ui/button';
+import { useEffect, useState } from 'react';
+import fetchdata from './utils/fetchdata';
+import Country from './components/Country';
+import { COUNTRY } from './types/country';
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [data, setData] = useState<COUNTRY[]>([]);
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const result = await fetchdata<COUNTRY>(
+          'https://raw.githubusercontent.com/apilayer/restcountries/refs/heads/master/src/main/resources/countriesV2.json',
+        );
+        setData(result); // Set the data to state
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching data
+      }
+    };
+
+    fetchCountries();
+  }, []); // Empty dependency array to run only once when the component mounts
+
+  if (loading) {
+    return <div>Loading..........</div>; // Display loading while waiting for the data
+  }
 
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <div>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Rspack + React + TypeScript</h1>
-      <Card className="card">
-        <Button type="button" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </Card>
-      <p className="read-the-docs">
-        Click on the Rspack and React logos to learn more
-      </p>
+    <div className="container m-auto bg-amber-950">
+      <Country info={data} />
     </div>
   );
-}
+};
 
 export default App;
