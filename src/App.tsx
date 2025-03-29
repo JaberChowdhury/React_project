@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import fetchdata from './utils/fetchdata';
 import Country from './components/Country';
 import { COUNTRY } from './types/country';
+import Model from './components/Model';
 
 const App = () => {
   const [data, setData] = useState<COUNTRY[]>([]);
@@ -13,7 +14,8 @@ const App = () => {
         const result = await fetchdata<COUNTRY>(
           'https://raw.githubusercontent.com/apilayer/restcountries/refs/heads/master/src/main/resources/countriesV2.json',
         );
-        setData(result); // Set the data to state
+        const good_data = await result.filter((d) => d.name != 'Israel');
+        setData(good_data); // Set the data to state
       } catch (error) {
         console.error('Error fetching countries:', error);
       } finally {
@@ -29,9 +31,12 @@ const App = () => {
   }
 
   return (
-    <div className="container m-auto bg-amber-950">
-      <Country info={data} />
-    </div>
+    <>
+      <Model />
+      <div className="container m-auto relative">
+        <Country info={data} />
+      </div>
+    </>
   );
 };
 
