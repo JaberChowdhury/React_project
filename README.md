@@ -1,28 +1,23 @@
-<h1 align="center">React-project</h1>
-<hr />
+# Rspack project
 
-## Branch : all-quran-project-2.0
+## Setup
 
-## Description : creating a simple al-quran project with astro and react 
-
-<hr />
-
-## About
-
-- All my small react projects
-- To test them by yourself just clone the repo then **_switch between branches_**
-- Actually I will save my practices here
-
-<hr />
-
-**Clone the repository**
+Install the dependencies:
 
 ```bash
-git clone https://github.com/JaberChowdhury/React_project
+npm install
 ```
 
-**or**
+## Get started
+
+Start the dev server:
 
 ```bash
-gh repo clone JaberChowdhury/React_project
+npm run dev
+```
+
+Build the app for production:
+
+```bash
+npm run build
 ```
