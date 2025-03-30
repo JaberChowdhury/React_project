@@ -25,7 +25,7 @@ export default function Navbar() {
     setOpen(false);
   };
   return (
-    <Box sx={{ pb: .5 }}>
+    <Box sx={{ pb: 0.5 }}>
       <Paper
         sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
         elevation={3}
@@ -36,7 +36,7 @@ export default function Navbar() {
           )}
           <BottomNavigationAction label="ViewList" icon={<ViewList />} />
           {pathname !== "/add" && (
-          <BottomNavigationAction label="AddCircle" icon={<AddCircle />} />
+            <BottomNavigationAction label="AddCircle" icon={<AddCircle />} />
           )}
           <BottomNavigationAction
             onClick={handleClickOpen}
