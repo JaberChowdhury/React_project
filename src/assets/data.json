@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "id": 101,
+      "title": "Vintage Leica M3 Camera",
+      "description": "Classic 1954 Leica M3 rangefinder camera in excellent working condition. Includes original leather case and 50mm Summicron lens. A collector's dream.",
+      "currentBidPrice": "3,850",
+      "timeLeft": "1 day left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid1-min.png"
+    },
+    {
+      "id": 102,
+      "title": "1965 Gibson SG Standard Electric Guitar",
+      "description": "Iconic 1965 Gibson SG with original PAF pickups. All-original components with minor play wear. Comes with period-correct hard case.",
+      "currentBidPrice": "12,750",
+      "timeLeft": "3 days left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid2-min.png"
+    },
+    {
+      "id": 103,
+      "title": "Original Apple Macintosh 128K (1984)",
+      "description": "Fully functional first-generation Macintosh 128K with original keyboard, mouse, and documentation. Boots to classic smiling Mac screen.",
+      "currentBidPrice": "6,200",
+      "timeLeft": "5 hours left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid3-min.png"
+    },
+    {
+      "id": 104,
+      "title": "Rolex Submariner 16610",
+      "description": "2005 Rolex Submariner Date with box and papers. Serviced in 2022. Features the classic black dial and aluminum bezel.",
+      "currentBidPrice": "9,999",
+      "timeLeft": "2 days left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid4-min.png"
+    },
+    {
+      "id": 105,
+      "title": "First Edition 'The Great Gatsby' by F. Scott Fitzgerald",
+      "description": "1925 first printing with original dust jacket. Verified by Scribner's imprint points. One of only 20,000 first edition copies printed.",
+      "currentBidPrice": "25,000",
+      "timeLeft": "1 week left",
+      "bidsCount": "12",
+      "image": "https://i.etsystatic.com/ishbcc/e3e354/5058040523/ishbcc_420x420.5058040523_i2aqlfxp.jpg?version=1"
+    },
+    {
+      "id": 106,
+      "title": "Mid-Century Modern Eames Lounge Chair",
+      "description": "Authentic 1960s Herman Miller Eames lounge chair and ottoman in rosewood and black leather. All original components with patina.",
+      "currentBidPrice": "4,800",
+      "timeLeft": "1 day left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid5-min.png"
+    },
+    {
+      "id": 107,
+      "title": "Banksy Original Screen Print",
+      "description": "Signed 2004 'Girl with Balloon' screen print with Pest Control certificate of authenticity. Edition 45/600. Excellent condition.",
+      "currentBidPrice": "75,000",
+      "timeLeft": "4 days left",
+      "bidsCount": "12",
+      "image": "https://raw.githubusercontent.com/ProgrammingHero1/B11A7-Simple-React-Assignment/refs/heads/main/assets/Bid7-min.png"
+    }
+  ]
+}

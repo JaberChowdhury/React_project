@@ -1,9 +1,8 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
-
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -116,6 +115,9 @@
 
 @layer base {
   * {
+    font-family: 'Sora', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     @apply border-border outline-ring/50;
   }
   body {

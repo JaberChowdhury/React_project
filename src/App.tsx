@@ -1,34 +1,21 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import { Card } from './components/ui/card';
-import { Button } from './components/ui/button';
+import React, { Suspense } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0);
+const Navbar = React.lazy(() => import('./components/Navbar'));
+const Hero = React.lazy(() => import('./components/Hero'));
+const Auction = React.lazy(() => import('./components/Auction'));
+const Footer = React.lazy(() => import('./components/Footer'));
 
+const App = () => {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <div>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Rspack + React + TypeScript</h1>
-      <Card className="card">
-        <Button type="button" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </Card>
-      <p className="read-the-docs">
-        Click on the Rspack and React logos to learn more
-      </p>
+    <div className="bg-[#DCE5F3] min-h-screen flex flex-col justify-center items-center">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navbar />
+        <Hero />
+        <Auction />
+        <Footer />
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;
