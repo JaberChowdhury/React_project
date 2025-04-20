@@ -38,7 +38,14 @@ type BookProviderProps = {
 
 export function BookProvider({ children }: BookProviderProps) {
   const [books, setBooks] = useState<Book[] | null>(null);
-  const [wishlist, setWishlist] = useState<Book[]>([]);
+  const [wishlist, setWishlist] = useState<Book[]>(() => {
+    if (typeof window !== "undefined") {
+      // Initialize wishlist from local storage
+      const storedWishlist = localStorage.getItem("wishlist");
+      return storedWishlist ? JSON.parse(storedWishlist) : [];
+    }
+    return []; // Default value for SSR
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,6 +72,13 @@ export function BookProvider({ children }: BookProviderProps) {
 
     fetchBooks();
   }, []);
+
+  // Save wishlist to local storage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }
+  }, [wishlist]);
 
   const getBookById = (id: number) => {
     return books?.find((book) => book.bookId === id);
