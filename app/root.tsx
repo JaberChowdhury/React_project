@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./index.css";
+import DoctorContextProvider from "./context/DoctorContextProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,8 +33,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="bg-[#ecf0f5]">
+        <DoctorContextProvider>{children}</DoctorContextProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
