@@ -1,14 +1,7 @@
-# Local
 .DS_Store
-*.local
-*.log*
+/node_modules/
 
-# Dist
-node_modules
-dist/
-
-# IDE
-.vscode/*
-!.vscode/extensions.json
-.idea
+# React Router
+/.react-router/
+/build/
 pnpm-lock.yaml
