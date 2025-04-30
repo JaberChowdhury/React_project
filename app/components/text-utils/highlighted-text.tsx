@@ -15,7 +15,7 @@ export function HighlightedText({ segments, className }: HighlightedTextProps) {
           className={cn(
             "transition-colors duration-500",
             segment.changed &&
-              "bg-red-200 border border-red-400 rounded px-[2px] dark:bg-yellow-800"
+              "bg-red-200 border border-red-400 rounded px-[2px] animate-bounce dark:bg-yellow-800"
           )}
         >
           {segment.text}

@@ -1,11 +1,12 @@
-import * as React from "react";
+import { FaFont, FaWordpress, FaHistory, FaTrash } from "react-icons/fa";
 import { Button } from "~/components/ui/button";
+import { Card, CardContent, CardTitle } from "~/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Textarea } from "~/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
-import { type TextOperation } from "~/lib/text-operations";
-import { FaWordpress, FaFont } from "react-icons/fa";
+import { type TextOperation, textOperations } from "~/lib/text-operations";
 import { useTextStore } from "~/store/text-store";
-
+import { GrNotes } from "react-icons/gr";
+import { Link } from "react-router";
 interface TextFormProps {
   text: string;
   onTextChange: (text: string) => void;
@@ -13,9 +14,10 @@ interface TextFormProps {
 }
 
 export function TextForm({ text, onTextChange, onOperation }: TextFormProps) {
-  const { wordCount, characterCount } = useTextStore();
+  const { wordCount, characterCount, history, deleteHistory, setText } =
+    useTextStore();
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-full max-w-2xl px-5">
       <CardContent className=" w-full flex justify-between items-center">
         <CardTitle>Text Utils</CardTitle>
         <div className="flex space-x-4 mb-4">
@@ -29,26 +31,82 @@ export function TextForm({ text, onTextChange, onOperation }: TextFormProps) {
           </div>
         </div>
       </CardContent>
-      <CardContent className="space-y-4">
-        <Textarea
-          placeholder="Enter your text here..."
-          value={text}
-          onChange={(e) => onTextChange(e.target.value)}
-          className="min-h-[200px]"
-        />
-        <div className="flex flex-wrap gap-2">
-          <Button onClick={() => onOperation("uppercase")}>
-            Convert to Uppercase
-          </Button>
-          <Button onClick={() => onOperation("lowercase")}>
-            Convert to Lowercase
-          </Button>
-          <Button onClick={() => onOperation("capitalize")}>
-            Capitalize Words
-          </Button>
-          <Button onClick={() => onOperation("clear")}>Clear Text</Button>
-        </div>
-      </CardContent>
+      <Textarea
+        placeholder="Enter your text here..."
+        value={text}
+        onChange={(e) => onTextChange(e.target.value)}
+        className="max-h-[200px] min-h-[200px]"
+      />
+      <Tabs defaultValue="Action" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 justify-center items-center">
+          <TabsTrigger value="Action">Action</TabsTrigger>
+          <TabsTrigger value="History">History</TabsTrigger>
+        </TabsList>
+        <TabsContent value="Action">
+          <div className="w-full grid grid-cols-3 gap-3">
+            {Object.keys(textOperations)
+              .sort()
+              .map((operation) => (
+                <Button
+                  key={operation}
+                  onClick={() => onOperation(operation as TextOperation)}
+                >
+                  {operation}
+                </Button>
+              ))}
+          </div>
+        </TabsContent>
+        <TabsContent value="History">
+          <div className="space-y-3">
+            {history.length === 0 ? (
+              <div className="flex flex-col items-center justify-center p-8 text-center border-2 border-dashed rounded-lg bg-muted/5">
+                <FaHistory className="w-12 h-12 text-muted-foreground/50" />
+                <h3 className="mt-4 text-sm font-medium text-muted-foreground">
+                  No history yet.
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground/70">
+                  Start typing or paste some text above and click any action to
+                  see the history
+                </p>
+              </div>
+            ) : (
+              [...history.slice().reverse()].map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between border rounded p-2 bg-gray-50 relative my-7"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div>
+                      <div className="font-semibold">{item.action}</div>
+                      <div className="text-xs text-gray-500">{item.time}</div>
+                      <div className="text-sm text-gray-700 truncate max-w-xs">
+                        {item.text}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full flex justify-end items-center py-7 absolute top-7 z-40 text-2xl">
+                    <Link to="/textanalyzer">
+                      <GrNotes className="text-yellow-600 mx-2" />
+                    </Link>
+                    <FaHistory
+                      onClick={() => setText(item.text)}
+                      className="text-blue-500"
+                    />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => deleteHistory(item.id)}
+                      title="Delete"
+                    >
+                      <FaTrash className="text-red-500" />
+                    </Button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </TabsContent>
+      </Tabs>
     </Card>
   );
 }

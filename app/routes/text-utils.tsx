@@ -1,9 +1,8 @@
-import * as React from "react";
-import { TextForm } from "~/components/text-utils/text-form";
-import { HighlightedText } from "~/components/text-utils/highlighted-text";
 import { EmptyPreview } from "~/components/text-utils/empty-preview";
+import { HighlightedText } from "~/components/text-utils/highlighted-text";
+import { TextForm } from "~/components/text-utils/text-form";
+import { cn } from "~/lib/utils";
 import { useTextStore } from "~/store/text-store";
-import { FaWordpress, FaFont } from "react-icons/fa"; // Import icons
 
 export function meta() {
   return [
@@ -16,36 +15,23 @@ export function meta() {
 }
 
 export default function TextUtils() {
-  const {
-    text,
-    setText,
-    performOperation,
-    wordCount,
-    characterCount,
-    getDiff,
-  } = useTextStore();
+  const { text, setText, performOperation, getDiff } = useTextStore();
   const textSegments = getDiff();
 
   return (
-    <div className="container mx-auto py-8 flex flex-col items-center">
-      {/* <div className="flex space-x-4 mb-4">
-        <div className="flex items-center">
-          <FaWordpress className="mr-1" />
-          <span>{wordCount}</span>
-        </div>
-        <div className="flex items-center">
-          <FaFont className="mr-1" />
-          <span>{characterCount}</span>
-        </div>
-      </div> */}
-
+    <div className=" mx-auto py-8 flex flex-col items-center">
       <TextForm
         text={text}
         onTextChange={setText}
         onOperation={performOperation}
       />
 
-      <div className="mt-8 space-y-4 w-full max-w-2xl">
+      <div
+        className={cn(
+          "mt-8 space-y-4 w-full max-w-2xl ",
+          text && "max-h-[300px] overflow-y-scroll"
+        )}
+      >
         <div>
           <h2 className="text-lg font-semibold mb-2">Preview</h2>
           {text ? (
