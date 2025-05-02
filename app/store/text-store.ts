@@ -13,7 +13,6 @@ interface TextState {
   wordCount: number;
   characterCount: number;
   history: history_type[];
-
   addHistory: (data: history_type) => void;
   deleteHistory: (id: string) => void;
   setText: (text: string) => void;
@@ -21,10 +20,11 @@ interface TextState {
   getWordCount: () => number;
   getCharacterCount: () => number;
   getDiff: () => Array<{ text: string; changed: boolean }>;
+  getCharacterFrequenciesArray: () => Array<{ item: string; count: number }>;
 }
 
 export const useTextStore = create<TextState>((set, get) => ({
-  text: "",
+  text: "kjdcbx suhiufd deuihckdnkjmvc fdvdfkjvhpfsi8 218376y08925789023475 nxzbcjbciu c ilbuhiwepsc '\\=[]].][dhiusd",
   previousText: "",
   wordCount: 0,
   characterCount: 0,
@@ -94,5 +94,14 @@ export const useTextStore = create<TextState>((set, get) => ({
 
     diff.push(currentSegment);
     return diff.filter((segment) => segment.text);
+  },
+
+  getCharacterFrequenciesArray: () => {
+    const { text } = get();
+    const freqMap: Record<string, number> = {};
+    for (const char of text) {
+      freqMap[char] = (freqMap[char] || 0) + 1;
+    }
+    return Object.entries(freqMap).map(([item, count]) => ({ item, count }));
   },
 }));

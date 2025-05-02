@@ -133,5 +133,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #f8f2d8;
+    opacity: 0.8;
+    background-image: radial-gradient(#181927 0.75px, #f8f2d8 0.75px);
+    background-size: 15px 15px;
   }
 }
