@@ -8,7 +8,7 @@ export type USETEXTANALYZER = {
 };
 
 const useTextAnalyzer = create<USETEXTANALYZER>((set, get) => ({
-  text: "ha jlhdsiu sdfkljlfkds weijh",
+  text: "Every great achievement begins with the decision to try.",
   resetText: () => set((state) => ({ text: "" })),
   setText: (text: string) => {
     set((state) => ({

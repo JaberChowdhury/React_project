@@ -1,4 +1,10 @@
 import ChartComponent from "~/components/ChartComponent";
+import ColumnChartComponent from "~/components/Columnchart";
+import MixedChartComponent from "~/components/MixedChart";
+import MixedChartLineColumnAreaComponent from "~/components/MixedChartLineColumnArea";
+import MultiRadialBarChartComponent from "~/components/MultiRadialBarChart";
+import PieChartComponent from "~/components/Piechart";
+import RadarChartComponent from "~/components/Radarchart";
 import Tabs from "~/components/Tabs";
 import { Textarea } from "~/components/ui/textarea";
 import useTextAnalyzer from "~/store/useTextAnalyzer";
@@ -13,7 +19,7 @@ const Textanalyzer = () => {
     characters: text_analysis_data.map((item) => item.item),
   };
   return (
-    <div className="mx-auto container">
+    <div className="mx-auto container space-y-8 mt-8">
       <Textarea
         placeholder="Enter your text here..."
         value={text}
@@ -28,8 +34,21 @@ const Textanalyzer = () => {
             item: <ChartComponent datas={datas} />,
             default: true,
           },
-          { key: "Columnchart", item: <ChartComponent datas={datas} /> },
-          { key: "Piechart", item: <ChartComponent datas={datas} /> },
+          {
+            key: "Columnchart",
+            item: <ColumnChartComponent datas={datas} title="column chart" />,
+          },
+          { key: "Piechart", item: <PieChartComponent datas={datas} /> },
+          { key: "Radarchart", item: <RadarChartComponent datas={datas} /> },
+          { key: "Mixchart", item: <MixedChartComponent datas={datas} /> },
+          {
+            key: "Mixchart-v2",
+            item: <MixedChartLineColumnAreaComponent datas={datas} />,
+          },
+          {
+            key: "Radialchart",
+            item: <MultiRadialBarChartComponent datas={datas} />,
+          },
         ]}
       />
     </div>

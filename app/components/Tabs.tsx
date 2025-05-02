@@ -18,7 +18,7 @@ const Tabs = ({ TabsData }: PropsType) => {
 
   return (
     <div>
-      <div style={{ display: "flex", gap: 8 }}>
+      <div className="flex flex-wrap justify-center items-center">
         {TabsData.map((tab) => (
           <button
             key={tab.key}

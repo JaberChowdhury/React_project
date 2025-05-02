@@ -24,7 +24,7 @@ interface TextState {
 }
 
 export const useTextStore = create<TextState>((set, get) => ({
-  text: "kjdcbx suhiufd deuihckdnkjmvc fdvdfkjvhpfsi8 218376y08925789023475 nxzbcjbciu c ilbuhiwepsc '\\=[]].][dhiusd",
+  text: "Every great achievement begins with the decision to try.",
   previousText: "",
   wordCount: 0,
   characterCount: 0,
