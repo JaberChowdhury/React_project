@@ -11,7 +11,6 @@ const ChartComponent = ({ datas }: propsType) => {
   const [ApexChart, setApexChart] = useState<any>(null);
   // const { getCharacterFrequenciesArray } = useTextAnalyzer();
 
-
   // const text_analysis_data = getCharacterFrequenciesArray();
 
   // const datas = {
@@ -48,7 +47,7 @@ const ChartComponent = ({ datas }: propsType) => {
     legend: { horizontalAlign: "left" },
   };
 
-  if (!ApexChart) return <div>Loading ..........</div>;
+  if (!ApexChart) return <div>Loading..........</div>;
 
   return (
     <ApexChart options={options} series={series} type="area" height={350} />
